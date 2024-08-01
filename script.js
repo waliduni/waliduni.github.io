@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     option.addEventListener("change", function () {
       // Update image based on selected color
       let color = this.value;
-      let imagePath = `img/${color}.jpg`;
+      let imagePath = `${color}.jpg`;
       mainImage.src = imagePath;
 
       // Update selected state for color options
