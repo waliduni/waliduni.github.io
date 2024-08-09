@@ -75,13 +75,17 @@ position: relative;
     margin-top: -800px;
     width:623.21px;
 }
-#shoe{
+#shoe img{
 z-index: -30;
-width: 50% ;
 
-height: 500px;
 transform: rotate(-28deg);
+
+}
+#shoe {
+    display: none;
+   width: 500px ;
 overflow: hidden;
+height: 400px; 
 }
 #AB{
 width: 100%;
@@ -97,7 +101,9 @@ background-color: white;
  border-radius: 30px 0 30px 0;
 }
 #content{ 
-   margin-top: 10px;   
+    overflow: hidden;
+   margin-top: 70px;
+   margin-left: 30px;   
 }
 #content div {
 padding-top: 15px ;
@@ -762,12 +768,12 @@ letter-spacing: 0.8px;
     #header {
         justify-content: space-between;
     }
-    #shoe{
+   /* #shoe{
 z-index: -30;
 width: 100% ;
 height: 400px;
 
-}
+}*/
 #bar {
     z-index: -99;
     transform: rotate(-30.79deg);
@@ -783,7 +789,7 @@ height: 400px;
     align-items: center;
     display: flex;
     flex-direction: column;
-    margin-top: 130px;
+    margin-top: 90px;
 }
 #footer{
 height: auto;
@@ -851,16 +857,19 @@ border-radius: 20px;
     top: -20%;
     width:723.21px;
 }
-#shoe{
+/*#shoe{
 z-index: -30;
 width: 100% ;
 
-height: 800px;}
+height: 800px;}*/
 }
 @media screen and (max-width: 431px){
 #bar{
     top: -50%;
     width:423.21px;
+}
+#content{
+    margin-top: 2px;
 }
 #content h1{
     font-size: 40px;
