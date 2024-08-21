@@ -45,6 +45,9 @@ font-size: 20px;
 transition: 0.8 ease;
 position: relative;
 }
+#navbar .shop{
+    color: white;
+}
 
 #navbar li a:hover
 ,#navbar li a.active ,.nav-active li a{
@@ -67,7 +70,7 @@ position: relative;
 }
 #bar {
     z-index: -99;
-    transform: rotate(-48.79deg);
+    transform: rotate(-50deg);
     position: fixed;
     overflow: hidden;
     background-color: #1E2A47;
@@ -101,9 +104,10 @@ background-color: white;
  border-radius: 30px 0 30px 0;
 }
 #content{ 
+    width: 100%;
     overflow: hidden;
    margin-top: 70px;
-   margin-left: 30px;   
+   text-align: center;   
 }
 #content div {
 padding-top: 15px ;
@@ -113,11 +117,10 @@ padding-top: 15px ;
 #content h1{
 font-size: 80px;
 letter-spacing: 4px;
-color:rgb(255, 255, 255);
-
+color: white;
 }
 #content h3{
-    color: rgb(255, 255, 255);
+    color: white;
     font-size: 30px;
     letter-spacing: 3px;
     padding-bottom: 10px;
@@ -130,7 +133,7 @@ h3.B{
 }
 #content button{
     color: white;
-    margin-left: 16%;
+    
     margin-top: 6%;
     font-size: 20px;
     width: 200px;
@@ -188,7 +191,7 @@ position: relative;
     box-shadow: 10px 10px 8px rgba(0, 0, 0, 0.2);
     border-top: 1px rgb(193, 193, 193) solid;
      display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     padding-top: 20px;
     flex-wrap: wrap;
     background-color: transparent;
@@ -222,9 +225,19 @@ font-size: 15px;
     font-size: 17px;
     font-weight: 700;
 }
-#produits .pro .des h4 span{
+#produits .pro .des h4 span {
     text-decoration: line-through;
     color: red;
+    
+}
+.product-info .prix1{
+    color: green;
+    font-size: 22px;
+}
+.product-info .prix{
+     text-decoration: line-through;
+    color: red;
+     font-size: 17px;
     padding-right: 3px;
 }
 #produits .pro .cart{
@@ -253,7 +266,7 @@ color: gold;
 #banner{
     
     margin-top: 50px;
-    margin-bottom: 60px ;
+    
     display: flex;
 justify-content: center;
 align-items:center ;
@@ -290,7 +303,7 @@ font-size: 60px;
     height: 30px;
     position: absolute;
     right: 50px;
-    color: #1E2A47;
+    color: gold;
     font-size: 30px; 
 }
 .product {
@@ -324,7 +337,7 @@ color: red;
 
 }
 .product-info select{
-background-color: #088178;
+background-color: #1E2A47;
 border: none;
 border-radius: 5px;
  box-shadow: 10px 10px 20px rgba(0,0,0,0.1);
@@ -345,7 +358,7 @@ border-radius: 5px;
     border: none;
     border-radius: 5px;
      box-shadow: 10px 10px 20px rgba(0,0,0,0.1);
-    background-color: #088178;
+    background-color: #1E2A47;
     text-align: center;
     height: 37px;
     width: 80px;
@@ -373,7 +386,7 @@ margin: 10px 0;
 .color-options{
  display:flex; 
  width: 100px;
- height: 100px;  
+ height: auto;  
 }
 .color-options input{
     display: none;
@@ -397,7 +410,7 @@ margin: 10px 0;
 .color-option.marron {
   background-color: maroon;
    border-radius: 50%;
-}*
+}
 .color-option.tabac {
  background-color: rgb(83, 53, 0);
   border-radius: 50%;
@@ -415,12 +428,30 @@ margin: 10px 0;
 .color-option.selected {
   border-color: #333;
 }
+.pbtn{
+    bottom: 2%;
+    position: absolute;
+    width: 100%;
+align-items: center;
+}
+.pbtn button{
+    color: white;
+    border: none;
+    border-radius: 5px;
+     box-shadow: 10px 10px 20px rgba(0,0,0,0.1);
+    background-color: gold;
+    text-align: center;
+    height: 47px;
+    width: 100px;
+}
 /*******************************contact********************/
 #contact{
     width: 100%;
 
     display: inline;
     place-content: center;
+    justify-content: center;
+    text-align: center;
 }
 #contact div {
 padding-top: 50px;
@@ -448,13 +479,25 @@ height: 40px;
  padding-left: 10%;  
 }
 #contact .social{
-    margin-left: 40px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
+
 /******************cart***********************************/
+.mon-panier{
+    color: #606063;
+width: 100%;
+text-align: center;
+padding: 3px 0;
+border-top: 1px rgb(193, 193, 193) solid;
+border-bottom: 1px rgb(193, 193, 193) solid;
+}
 #cartee{
     position: relative;
     padding-top: 50px;
-    padding-bottom: 400px;
+    padding-bottom: 60px;
 }
 #cartee table{
 margin-top: 50px;
@@ -507,12 +550,8 @@ font-size: 13px;
     margin-top: 40px ;
    height: 30px; 
 }
-#cartee button.commander{
-    
-    position: absolute;
-    left: 60%;
-    bottom:  50px;
-     margin: 0 10px;
+#cartee button{
+     margin: 20px 10px;
     color: white;
     border: none;
     border-radius: 5px;
@@ -526,22 +565,6 @@ font-size: 13px;
 #cartee button.commander:disabled{
     background-color:#088178 ;
     opacity: 0.5;
-}
-#cartee button.retourner{
-    
-    position: absolute;
-    left: 30%;
-    bottom:  50px;
-     margin: 0 10px;
-    color: white;
-    border: none;
-    border-radius: 5px;
-     box-shadow: 10px 10px 20px rgba(0,0,0,0.1);
-    background-color: #088178;
-    text-align: center;
-    height: 37px;
-    width: 90px;
-
 }
 #cartee table tbody td a i{
     color: #1E2A47;
@@ -567,7 +590,7 @@ font-size: 13px;
     background-color: gold;
 
 }
-.modal , .modal2 , .modal3 {
+.modal , .modal2 , .modal3, .modal4{
 position: fixed;
 top: 0;
 left: 0;
@@ -576,8 +599,12 @@ height: 100%;
 z-index: 10;
 text-align: center;
 display: none;
+align-items: center;
+justify-content: center;
+
+
 }
-.modal3 button{
+/*.modal3 button{
        position: absolute;
     left: 30%;
     bottom: 50px;
@@ -591,7 +618,7 @@ display: none;
     height: 37px;
     width: 90px;
 
-}
+}*/
 .bg{
     
     position: absolute;
@@ -603,23 +630,24 @@ background-color: rgba(0, 0, 0, 0.6);
 }
 .content{
     position: relative;
-    background-color: white;
-    width: 70%;
-    height: 80%;
-    margin-top: 5%;
-    margin-left: 15%;
-
+    background-color: rgb(33, 33, 33);
+    width: 400px;
+    padding-bottom: 10px;
+    height: auto;
+    min-height: 300px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 .up{
-    padding-bottom: 20px;
+   
     display: flex;
     width: 100%;
 justify-content: space-between;
-background-color: #1E2A47;
 }
 .up i{
     padding: 10px;
-    color: white;
+    color: gold;
     font-size: 30px;
 }
 .content h1{
@@ -629,24 +657,30 @@ background-color: #1E2A47;
     
 }
 .content h3{
-    color: #088178;
+    color: white;
 }
 .content .form{
 display: grid;
-   justify-content: start;
+   justify-content: center;
 width: 100%;
 }
 .content .form label{
-    
+    color: white;
+    width: 100%;
     margin-top: 5%;
 }
 .content .form label input{
     height: 30px;
-    width: 200px;
+    width: 90%;
+    border: none;
+    border-radius: 5px;
+}
+.envoyer{
+    width: 100%;
+    margin-top: 20px;
 }
 .content .form button{
-   margin-left: 30%;
-    margin-top: 10%;
+  
     color: white;
    border: none;
     border-radius: 5px;
@@ -682,8 +716,9 @@ width: 100%;
 }
 #footer{
     position: relative;
+    bottom: 0%;
 width: 100%;
-height: 250px;
+height: auto;
 background-color: #1E2A47;
 display: flex;
 
@@ -735,8 +770,29 @@ letter-spacing: 0.8px;
  box-shadow: 15px 10px 10px rgba(0,0,0,0.1);   
 }
 
-
+#tariftb{
+padding: 30px 0;
+}
+#tariftb thead td{
+  color: #606063;  
+}
+#tariftb td{
+    padding: 5px 0;
+    color: #1E2A47;
+    border-bottom: #606063 1px solid;
+}
+#tariftb .nondispo{
+    color: red;
+}
 /**********************Responsive************************************   */
+@media screen and (max-width: 821px) {
+#produits .pro{
+width:25%;
+height: 370px;
+min-width: 120px;
+margin: 5px;
+}
+}
 @media screen and (max-width: 768px) {
     .burger {
         display: flex;
@@ -792,6 +848,7 @@ height: 400px;
     margin-top: 90px;
 }
 #footer{
+    position: relative;
 height: auto;
 background-color: #1E2A47;
 display: flex;
@@ -815,9 +872,9 @@ height: 50%;
 border-radius: 20px;
 }
 #produits .pro{
-width:18%;
+width:25%;
 height: 280px;
-min-width: 140px;
+min-width: 160px;
 margin: 5px;
 }
 #produits h1{
@@ -827,9 +884,9 @@ margin: 5px;
 } 
 @media screen and (max-width: 376px) {
  #produits .pro{
-width: 17%;
+width: 19%;
 height: 250px;
-min-width: 130px;
+min-width: 150px;
 
 }
 #produits .pro button{
@@ -869,13 +926,13 @@ height: 800px;}*/
     width:423.21px;
 }
 #content{
-    margin-top: 2px;
+    margin-top: 10px;
 }
 #content h1{
-    font-size: 40px;
+    font-size: 55px;
 }
 #content h3{
-    font-size: 20px;
+    font-size: 25px;
     letter-spacing: normal;
 }
 h3.A{
@@ -991,5 +1048,9 @@ font-size: 30px;
 }
 .remarque{
 color: #e81a1a;
-font-size: 30px;
+font-size: 20px;
+}
+#empty{
+    color: black;
+    font-size: 20px;
 }
