@@ -32,7 +32,7 @@
     </section>
     <section id="cartee">
 
-        <h1>mon panier:</h1>
+       <div class="mon-panier"> <h1>Mon Panier:</h1></div>
         <table width="100%">
         <thead>
             <tr>
@@ -49,18 +49,20 @@
     </tbody>
     </table> 
     <br><br><br>
-   prix totale: <span id="prixtot">0da</span><br>
+    <div id="empty" style="color: red; width: 100%; text-align: center;"></div>
+   <div style="text-align: center;color: gray;">prix totale: <span id="prixtot">0da</span><br></div>
    
-    <button class="retourner" onclick="history.back()">Retourner</button>
-    <button class="commander" onclick="document.querySelector('.modal').style.display = 'grid'">commander</button>
+    <div style="width: 100%;text-align: center;"><button class="retourner" onclick="history.back()">Retourner</button>
+    <button class="commander" onclick="document.querySelector('.modal').style.display = 'grid'">commander</button></div>
     
-</section><span class="remarque">Remarque:</span>les frais de livraison ne sont pas inclus dans le prix totale.
+</section><div style="width: 100%;text-align: center;padding-bottom: 5px;"><span class="remarque">Remarque:</span>les frais de livraison ne sont pas inclus dans le prix totale. </div>
+<div style="width: 100%; text-align: center;display: block; align-items: center;"><p style="color: gray;text-decoration: underline red;">pour afficher les tarifs de livraison veuillez cliquer sur le button voir</p><a href="livraison.html"> <button style="  margin: 20px 10px;color: white;border: none;border-radius: 5px;box-shadow: 10px 10px 20px rgba(0,0,0,0.1);background-color: #088178;text-align: center;height: 25px;width: 60px;">voir</button></a></div>
     <div class="modal">
         <div class="bg" onclick="document.querySelector('.modal').style.display = 'none'"></div>
         <div class="content">
-           <div class="up"> <h1>commande</h1> <i class="fa-solid fa-xmark" onclick="document.querySelector('.modal').style.display = 'none'"></i></div>
+           <div class="up"> <h1>envoyer votre commande</h1> <i class="fa-solid fa-xmark" onclick="document.querySelector('.modal').style.display = 'none'"></i></div>
             <form action="" class="form">
-                <label for="nom">nom: <input id="nom" type="text" required></label>
+                <label for="nom"><div>nom:</div> <input id="nom" type="text" required></label>
                 <label for="prenom">prenom: <input id="prenom" type="text" required></label>
                 <label for="telephone">telephone: <input id="telephone" type="tel" required></label>
                   <label for="wilaya"> wilaya:  <select id="wilaya" name="wilaya" required>
@@ -117,7 +119,7 @@
 			</select></label>
           <label for="adresse">commune et adresse de Livraison: <input type="text" id="adresse" required></label>
 
-                <button type="submit" onclick="document.querySelector('.modal2').style.display = 'grid'">envoyer</button>
+                <div class="envoyer"><button type="submit" >envoyer</button></div>
             </form>
         </div>
 
@@ -130,7 +132,16 @@
              <div class="success-animation">
 <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" /><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" /></svg>
 </div>
-<h3>تم إرسال الطلب بنجاح. <br>سيتم الإتصال بك عبر الرقم الهاتفي الخاص بك لتأكيد الطلب خلال أقل من 24h</h3></div>
+<h3>تم إرسال الطلب بنجاح. <br> 24h سيتم الإتصال بك عبر الرقم الهاتفي الخاص بك لتأكيد الطلب خلال أقل من</h3></div>
+          </div>
+
+
+           <div class="modal4">
+        <div class="bg" onclick="document.querySelector('.modal4').style.display = 'none'"></div>
+        <div class="content">
+           <div class="up"><i class="fa-solid fa-xmark" onclick="document.querySelector('.modal4').style.display = 'none'"></i></div>
+<button>yes</button> <button>no</button>
+        </div>
           </div>
  <section id="footer">
 
@@ -148,7 +159,7 @@
 <a href="tel:0549609124"><i class="fa-solid fa-phone">:</i>0549609124</a><a href="mailto: walidwalidwb23@gmail.com"><i class="fa-solid fa-envelope">:</i>walidwalidwb23@gmail.com</a>
 </div>
 <div class="img">
-    <img src="img/logowhite.png" alt="">
+    <img src="logowhite.png" alt="">
 </div>
     </section>
 </body>
@@ -157,16 +168,24 @@
 </script>
     <script src="script.js"></script>
     <script>
-           (function(){
+        let nom =document.querySelector("#nom").value,
+        prenom=document.querySelector("#prenom").value,
+        num=document.querySelector("#telephone").value,
+        wilaya=document.querySelector("#wilaya").value,
+        adresse=document.querySelector("#adresse").value;
+        (function(){
       emailjs.init({
         publicKey: "YYOC_Bg_laf81EGVv",
       });
    })();
         let panier = localStorage["panier"];
         if(panier) panier = JSON.parse(panier);
+        if(!panier) {document.getElementById("empty").innerHTML = '!votre panier est vide!';
+            document.querySelector('.commander').disabled=true;
+        }
         panier?.map((product, i) => {
             document.querySelector("tbody").innerHTML += `<tr id="_${i}">
-            <td><a href="#" onclick='supprimer(${i})' ><i class="fa-solid fa-trash"></i></a></td>
+            <td><a href="#" onclick="supprimer(${i})" ><i class="fa-solid fa-trash"></i></a></td>
             <td><img src="${product.image}" alt=""></td>
             <td>${product.name}</td>
             <td>${product.pointure}</td>
@@ -175,17 +194,22 @@
                })
           document.getElementById("prixtot").innerHTML=panier.reduce((a,b) => a + (b.promo || b.prix),0)+'da';
                
-        
-if(!panier || !panier[0]) document.querySelector('.commander').disabled=true;
+    
+if(!panier || !panier[0]){ document.getElementById("empty").innerHTML = '!votre panier est vide!';
+    document.querySelector('.commander').disabled=true;
+} 
         function supprimer(index) {
             let companier = panier.filter((produit, i) => i !== index)
             panier=companier;
             localStorage["panier"] = JSON.stringify(companier);
             document.querySelector(`#_${index}`).remove()
             //alert(`Deleted`)
-            if(!companier || !companier[0]) {document.querySelector('.commander').disabled;
+            if(!companier || !companier[0]) {
+               
+                document.querySelector('.commander').disabled;
             }
         }
+        
 
         document.querySelector("form").addEventListener("submit", function (event) {
             event.preventDefault();
@@ -211,12 +235,13 @@ if(!panier || !panier[0]) document.querySelector('.commander').disabled=true;
 
         emailjs.send('service_qif11uf', 'template_pslt4hr', templateParams).then(
             (response) => {
-                onclick="document.querySelector('.modal2').style.display = 'grid'"
+                document.querySelector('.modal2').style.display = 'grid'
                 localStorage.removeItem('panier');
-                document.querySelector("table").innerHTML = "";
+                document.getElementById("empty").innerHTML = '!votre panier est vide!';
+                document.querySelector("tbody").innerHTML = "";
                 document.querySelector(".modal").style.display = "none";
                 console.log('SUCCESS!', response.status, response.text);
-                document.querySelector("button").disabled = false;
+                document.querySelector(".commander").disabled = true;
             },
             (error) => {
                 console.log('erreur...', error);
