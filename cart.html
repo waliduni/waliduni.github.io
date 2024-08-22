@@ -33,6 +33,7 @@
     <section id="cartee">
 
        <div class="mon-panier"> <h1>Mon Panier:</h1></div>
+       <div style="width: 100%;"> <button class="supptout" onclick="supprimer_tout()">supprimer tout</button></div>
         <table width="100%">
         <thead>
             <tr>
@@ -54,7 +55,10 @@
    
     <div style="width: 100%;text-align: center;"><button class="retourner" onclick="history.back()">Retourner</button>
     <button class="commander" onclick="document.querySelector('.modal').style.display = 'grid'">commander</button></div>
-    
+  
+
+
+
 </section><div style="width: 100%;text-align: center;padding-bottom: 5px;"><span class="remarque">Remarque:</span>les frais de livraison ne sont pas inclus dans le prix totale. </div>
 <div style="width: 100%; text-align: center;display: block; align-items: center;"><p style="color: gray;text-decoration: underline red;">pour afficher les tarifs de livraison veuillez cliquer sur le button voir</p><a href="livraison.html"> <button style="  margin: 20px 10px;color: white;border: none;border-radius: 5px;box-shadow: 10px 10px 20px rgba(0,0,0,0.1);background-color: #088178;text-align: center;height: 25px;width: 60px;">voir</button></a></div>
     <div class="modal">
@@ -135,14 +139,6 @@
 <h3>تم إرسال الطلب بنجاح. <br> 24h سيتم الإتصال بك عبر الرقم الهاتفي الخاص بك لتأكيد الطلب خلال أقل من</h3></div>
           </div>
 
-
-           <div class="modal4">
-        <div class="bg" onclick="document.querySelector('.modal4').style.display = 'none'"></div>
-        <div class="content">
-           <div class="up"><i class="fa-solid fa-xmark" onclick="document.querySelector('.modal4').style.display = 'none'"></i></div>
-<button>yes</button> <button>no</button>
-        </div>
-          </div>
  <section id="footer">
 
 <div>
@@ -182,6 +178,7 @@
         if(panier) panier = JSON.parse(panier);
         if(!panier) {document.getElementById("empty").innerHTML = '!votre panier est vide!';
             document.querySelector('.commander').disabled=true;
+            document.querySelector(".supptout").disabled=true;
         }
         panier?.map((product, i) => {
             document.querySelector("tbody").innerHTML += `<tr id="_${i}">
@@ -193,11 +190,17 @@
         </tr> `
                })
           document.getElementById("prixtot").innerHTML=panier.reduce((a,b) => a + (b.promo || b.prix),0)+'da';
-               
     
 if(!panier || !panier[0]){ document.getElementById("empty").innerHTML = '!votre panier est vide!';
     document.querySelector('.commander').disabled=true;
-} 
+    document.querySelector(".supptout").disabled;
+}       function supprimer_tout(){
+                localStorage.removeItem('panier');
+                document.getElementById("empty").innerHTML = '!votre panier est vide!';
+                document.querySelector("tbody").innerHTML = "";
+                document.querySelector(".commander").disabled = true;
+                document.querySelector(".supptout").disabled = true;
+}
         function supprimer(index) {
             let companier = panier.filter((produit, i) => i !== index)
             panier=companier;
@@ -205,12 +208,13 @@ if(!panier || !panier[0]){ document.getElementById("empty").innerHTML = '!votre 
             document.querySelector(`#_${index}`).remove()
             //alert(`Deleted`)
             if(!companier || !companier[0]) {
-               
+               document.querySelector(".supptout").disabled=true;
                 document.querySelector('.commander').disabled;
             }
+         
+            location.reload(true);
         }
         
-
         document.querySelector("form").addEventListener("submit", function (event) {
             event.preventDefault();
             let number = document.querySelector("#telephone").value
@@ -242,6 +246,7 @@ if(!panier || !panier[0]){ document.getElementById("empty").innerHTML = '!votre 
                 document.querySelector(".modal").style.display = "none";
                 console.log('SUCCESS!', response.status, response.text);
                 document.querySelector(".commander").disabled = true;
+                document.querySelector(".supptout").disabled;
             },
             (error) => {
                 console.log('erreur...', error);
