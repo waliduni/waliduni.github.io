@@ -191,7 +191,7 @@ position: relative;
     box-shadow: 10px 10px 8px rgba(0, 0, 0, 0.2);
     border-top: 1px rgb(193, 193, 193) solid;
      display: flex;
-    justify-content: space-between;
+    justify-content: center;
     padding-top: 20px;
     flex-wrap: wrap;
     background-color: transparent;
@@ -500,7 +500,7 @@ border-bottom: 1px rgb(193, 193, 193) solid;
     padding-bottom: 60px;
 }
 #cartee table{
-margin-top: 50px;
+margin-top: 10px;
 width: 100%;
 border-collapse: collapse;
 table-layout: fixed;
@@ -550,6 +550,11 @@ font-size: 13px;
     margin-top: 40px ;
    height: 30px; 
 }
+#cartee .supptout{
+background-color: #1E2A47;
+height: 27px; ;
+font-size: 10px;
+}
 #cartee button{
      margin: 20px 10px;
     color: white;
@@ -562,8 +567,7 @@ font-size: 13px;
     width: 90px;
 
 }
-#cartee button.commander:disabled{
-    background-color:#088178 ;
+#cartee button.commander:disabled , #cartee .supptout:disabled{
     opacity: 0.5;
 }
 #cartee table tbody td a i{
@@ -941,7 +945,12 @@ margin-left: 25%;
 h3.B{
     margin-left: 0;
 }
-
+#produits .pro{
+width:25%;
+height: 280px;
+min-width: 170px;
+margin: 4px;
+}
 #cartee table thead td{
     font-size: 7px;
 }
