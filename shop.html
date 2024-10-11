@@ -90,15 +90,16 @@ querySnapshot.forEach((doc) => {
                 <h5>${data.name}</h5>
                 <h4><span>${data.prix}Da</span> ${data.promo}da</h4>
             </div>
-            <BUtton>VOIR PLUS</BUtton>
+            
             </div>`;
 document.querySelector(".pro_container").innerHTML += ` <div class="pro"  onclick="window.location.href='sproduct.html?id=${doc.id}';">
                 <img src="${data.image}" alt="">
-                <div class="des"><span>${data.marque}</span>
+                <div class="des">
+                 ${data.promo? `<h4><span>${data.prix}Da</span> ${data.promo}da</h4>` : `<h4>${data.prix}Da</h4>`}
                 <h5>${data.name}</h5>
-                ${data.promo? `<h4><span>${data.prix}Da</span> ${data.promo}da</h4>` : `<h4>${data.prix}Da</h4>`}
+               
             </div>
-            <BUtton>VOIR PLUS</BUtton>
+           
             </div>`
 });
 document.querySelector('.loading').style.display = 'none';
