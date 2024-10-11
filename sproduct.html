@@ -99,7 +99,8 @@
         <div class="bg" onclick="document.querySelector('.modal3').style.display = 'none'"></div>
         <div class="content">
            <div class="up"><i class="fa-solid fa-xmark" onclick="document.querySelector('.modal3').style.display = 'none'"></i></div>
-   <h3>.لقد تمت إضافة طلبك إلى صندوق المبيعات بنجاح</h3>       
+   <h3>.لقد تمت إضافة طلبك إلى صندوق المبيعات بنجاح</h3> 
+   <h3 >يرجى الذهاب إلى سلة المبيعات لتأكيد طلبك عن طريق الضغط على<span style="color: red;">aller au panier</span> </h3>      
  <div class="pbtn">   <button onclick="location.href='cart.html';">aller au panier</button>  </div>
 </div>
 
@@ -159,22 +160,20 @@ document.querySelector('.product').innerHTML = `
     </div>
     <div class="product-info">
       <h1>${data.name}</h1>
-      <h2>${data.marque}</h2>
-      <h3>Prix:  ${data.promo?('<span class="prix">'+data.prix+'DA</span><span class="prix1">'+data.promo+'DA</span></h2>'):('<span class="prix1">'+data.prix+'DA</span>')}</h3>
+      <h3>${data.promo?('<span class="prix">'+data.prix+'DA</span><span class="prix1">'+data.promo+'DA</span></h2>'):('<span class="prix1">'+data.prix+'DA</span>')}</h3>
       <div class="pointure">
     <select>
         <option>pointure</option>
         ${Object.entries(data.pointures).map(pointure => (`<option value="${pointure[0]}" class="${pointure[1]? "A": "B"}" ${pointure[1]? "": "disabled"} >${pointure[0]}</option>`))}
     </select>    
-    </div>
      <h4>choisir une couleur:</h4>
       <div class="color-options">
         ${colors.join('')}
-      </div>
+      </div></div>
+    <h2>details:</h2>
+      <p>${data.description}</p>
       <div id="putbtn">
       <button onclick='add(${JSON.stringify(data)})' onclick=' document.querySelector('.success-animation').style.display = 'content''>ajouter au panier</button></div>
-      <h2>details:</h2>
-      <p>${data.description}</p>
     </div>
   </div>`
   document.querySelector('.loading').style.display = 'none';
